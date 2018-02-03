@@ -19,7 +19,7 @@ CloudBuild is a build platform for C# in the cloud (hosted on Microsoft Azure):
 - Full end to end test is included that does the following:
   - Upload source code
   - Trigger build in the cloud for our source code
-  - Wait for it to finish and pull status. Assert successful compilation
+  - Wait for it to finish and poll status. Assert successful compilation
   - Pull the binary, run it and validate expected result
 - For completeness, more tests should be added: basic unit tests for the core logic, more e2e tests for rainy scenarios and failures, concurrency/load testing.
 
