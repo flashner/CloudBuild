@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Cloud Build";
+}
+
+<div ng-controller="CloudBuildAppController" ng-init="refresh()">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2 text-center">
+                <h2>Cloud Build</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <form class="col-xs-12 center-block">
+                    <div class="col-xs-6 form-group">
+                        <input id="txtAdd" type="text" class="form-control" placeholder="Queue build" ng-model="item"/>
+                    </div>
+                    <button id="btnAdd" class="btn btn-default" ng-click="add(item); refresh()">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        Add
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <div class="row">
+                    <div class="col-xs-4">
+                        Build history
+                    </div>
+                </div>
+                <div class="row top-buffer" ng-repeat="build in builds.data">
+                    <div class="col-xs-6">
+                        <button class="btn btn-success text-left btn-block" ng-click="refresh()">
+                            <span class="pull-left">
+                                {{build.key}}
+                            </span>
+                            <span class="badge pull-right">
+                                {{build.value}}
+                            </span>
+                        </button>
+                    </div>
+                    <div class="col-xs-1">
+                        <a target="_self" href="https://amitstorage11.blob.core.windows.net/output/{{build.key}}.exe_" download="{{build.key}}.exe_">download</a>
+                    </div>
+                    <div class="col-xs-2">
+                        <button class="btn btn-danger pull-right btn-block" ng-click="remove(build.key)">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
