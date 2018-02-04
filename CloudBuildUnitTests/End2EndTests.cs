@@ -80,10 +80,10 @@ namespace CloudBuildUnitTests
             // get the type Program from the assembly
             Type programType = assembly.GetType("Program");
 
-            // Get the static Main() method info from the type
+            // Get the static CheckMe() method info from the type
             MethodInfo method = programType.GetMethod("CheckMe");
 
-            // invoke Program.Main() static method
+            // invoke Program.CheckMe() static method
             string runResult = (string) method.Invoke(null, null);
 
             Assert.AreEqual("hello World!. i=10", runResult);
